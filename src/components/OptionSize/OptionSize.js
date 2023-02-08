@@ -11,7 +11,7 @@ const OptionSize = props => {
       <ul className={styles.choices}>
         {props.sizes.map((size) => (
           <li key={shortid()}>
-            <button type='button' onClick={() => { props.setCurrentSize(size.name); props.setCurrentPrice(size.additionalPrice); props.getPrice() }} className={clsx(size.name === props.currentSize && styles.active)}>
+            <button type='button' onClick={() => { props.setCurrentSize(size.name); props.setCurrentPrice(size.additionalPrice)}} className={clsx(size.name === props.currentSize && styles.active)}>
               {size.name}
             </button>
           </li>))}
@@ -23,7 +23,6 @@ const OptionSize = props => {
 OptionSize.propTypes = {
   additionalPrice: PropTypes.number,
   sizes: PropTypes.array.isRequired,
-  getPrice: PropTypes.func.isRequired,
   currentSize: PropTypes.string.isRequired,
   setCurrentSize: PropTypes.func.isRequired,
   setCurrentPrice: PropTypes.func.isRequired,

@@ -11,9 +11,10 @@ const ProductForm = props => {
       <OptionSize 
         sizes={props.sizes}
         currentSize={props.currentSize}
+        currentPrice={props.currentPrice}
         setCurrentSize={props.setCurrentSize}
         setCurrentPrice={props.setCurrentPrice}
-        getPrice={props.getPrice}
+        basePrice={props.basePrice}
       />
       <OptionColor
         colors={props.colors}
@@ -34,9 +35,9 @@ ProductForm.propTypes = {
   setCurrentColor: PropTypes.func.isRequired,
   setCurrentPrice: PropTypes.func.isRequired,
   currentColor: PropTypes.string.isRequired,
+  currentPrice: PropTypes.number.isRequired,
   currentSize: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  getPrice: PropTypes.func.isRequired,
 };
 
 export default ProductForm;
