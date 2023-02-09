@@ -5,7 +5,7 @@ import OptionSize from '../OptionSize/OptionSize';
 import PropTypes from 'prop-types';
 
 const ProductForm = 
-({ sizes, currentSize, currentPrice, setCurrentSize, setCurrentPrice,
+({ sizes, currentSize, currentSizePrice, setCurrentSize, setCurrentSizePrice,
    basePrice, colors, setCurrentColor, currentColor, handleSubmit}) => {
 
   return (
@@ -13,9 +13,9 @@ const ProductForm =
       <OptionSize 
         sizes={sizes}
         currentSize={currentSize}
-        currentPrice={currentPrice}
+        currentSizePrice={currentSizePrice}
         setCurrentSize={setCurrentSize}
-        setCurrentPrice={setCurrentPrice}
+        setCurrentSizePrice={setCurrentSizePrice}
         basePrice={basePrice}
       />
       <OptionColor
@@ -35,9 +35,9 @@ ProductForm.propTypes = {
   sizes: PropTypes.array.isRequired,
   setCurrentSize: PropTypes.func.isRequired,
   setCurrentColor: PropTypes.func.isRequired,
-  setCurrentPrice: PropTypes.func.isRequired,
+  setCurrentSizePrice: PropTypes.func.isRequired,
   currentColor: PropTypes.string.isRequired,
-  currentPrice: PropTypes.number.isRequired,
+  currentSizePrice: PropTypes.number.isRequired,
   currentSize: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };

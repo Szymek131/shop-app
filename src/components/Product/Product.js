@@ -8,19 +8,19 @@ const Product = ({colors, sizes, basePrice, title, name}) => {
 
   const [currentColor, setCurrentColor] = useState(colors[0]);
   const [currentSize, setCurrentSize] = useState(sizes[0].name);
-  const [currentPrice, setCurrentPrice] = useState(0);
+  const [currentSizePrice, setCurrentSizePrice] = useState(0);
 
-  const getPrice = useMemo( () => {
-    const totalPrice = basePrice + currentPrice;
+  const price = useMemo( () => {
+    const totalPrice = basePrice + currentSizePrice;
     return totalPrice
-  }, [basePrice, currentPrice])
+  }, [basePrice, currentSizePrice])
 
   const handleSubmit = e => {
     e.preventDefault();
     console.log('Summary');
     console.log('=========');
     console.log('Name: ', title);
-    console.log('Price: ', getPrice);
+    console.log('Price: ', price);
     console.log('Size: ', currentSize);
     console.log('Color: ', currentColor);
   }
@@ -31,17 +31,17 @@ const Product = ({colors, sizes, basePrice, title, name}) => {
       <div>
         <header>
           <h2 className={styles.name}>{title}</h2>
-          <span className={styles.price}>Price: {getPrice}$</span>
+          <span className={styles.price}>Price: {price}$</span>
         </header>
         <ProductForm
           sizes={sizes}
           colors={colors}
           currentColor={currentColor}
           currentSize={currentSize}
-          currentPrice={currentPrice}
+          currentSizePrice={currentSizePrice}
           setCurrentColor={setCurrentColor}
           setCurrentSize={setCurrentSize}
-          setCurrentPrice={setCurrentPrice}
+          setCurrentSizePrice={setCurrentSizePrice}
           handleSubmit={handleSubmit}
           basePrice={basePrice}
         />
