@@ -4,22 +4,24 @@ import OptionColor from '../OptionColor/OptionColor';
 import OptionSize from '../OptionSize/OptionSize';
 import PropTypes from 'prop-types';
 
-const ProductForm = props => {
+const ProductForm = 
+({ sizes, currentSize, currentPrice, setCurrentSize, setCurrentPrice,
+   basePrice, colors, setCurrentColor, currentColor, handleSubmit}) => {
 
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <OptionSize 
-        sizes={props.sizes}
-        currentSize={props.currentSize}
-        currentPrice={props.currentPrice}
-        setCurrentSize={props.setCurrentSize}
-        setCurrentPrice={props.setCurrentPrice}
-        basePrice={props.basePrice}
+        sizes={sizes}
+        currentSize={currentSize}
+        currentPrice={currentPrice}
+        setCurrentSize={setCurrentSize}
+        setCurrentPrice={setCurrentPrice}
+        basePrice={basePrice}
       />
       <OptionColor
-        colors={props.colors}
-        setCurrentColor={props.setCurrentColor}
-        currentColor={props.setCurrentColor}
+        colors={colors}
+        setCurrentColor={setCurrentColor}
+        currentColor={currentColor}
       />
       <Button className={styles.button} type='submit'>
         <span className="fa fa-shopping-cart" />

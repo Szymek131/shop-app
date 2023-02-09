@@ -3,21 +3,20 @@ import clsx from 'clsx';
 import shortid from 'shortid';
 import PropTypes from 'prop-types';
 
-const OptionColor = props => {
+const prepareColorClassName = color => 
+styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
 
-  const prepareColorClassName = color => {
-    return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
-  }
+const OptionColor = ({ colors, currentColor, setCurrentColor }) => {
 
   return (
     <div className={styles.colors}>
       <h3 className={styles.optionLabel}>Colors</h3>
       <ul className={styles.choices}>
-        {props.colors.map((color) => (
+        {colors.map( color => (
           <li key={shortid()}>
             <button type='button' 
-            onClick={() => {props.setCurrentColor(color)}}
-            className={clsx(prepareColorClassName(color), color === props.currentColor && styles.active)}/>
+            onClick={() => {setCurrentColor(color)}}
+            className={clsx(prepareColorClassName(color), color === currentColor && styles.active)}/>
           </li>
         ))}
       </ul>
@@ -28,7 +27,7 @@ const OptionColor = props => {
 OptionColor.propTypes = {
   colors: PropTypes.array.isRequired,
   setCurrentColor: PropTypes.func.isRequired,
-  currentColor: PropTypes.func.isRequired,
+  currentColor: PropTypes.string.isRequired,
 };
 
 export default OptionColor;

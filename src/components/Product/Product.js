@@ -4,22 +4,22 @@ import ProductImage from '../ProductImage/ProductImage';
 import PropTypes from 'prop-types';
 import ProductForm from '../ProductForm/ProductForm';
 
-const Product = props => {
+const Product = ({colors, sizes, basePrice, title, name}) => {
 
-  const [currentColor, setCurrentColor] = useState(props.colors[0]);
-  const [currentSize, setCurrentSize] = useState(props.sizes[0].name);
+  const [currentColor, setCurrentColor] = useState(colors[0]);
+  const [currentSize, setCurrentSize] = useState(sizes[0].name);
   const [currentPrice, setCurrentPrice] = useState(0);
 
   const getPrice = useMemo( () => {
-    const totalPrice = props.basePrice + currentPrice;
+    const totalPrice = basePrice + currentPrice;
     return totalPrice
-  }, [props.basePricem, currentPrice])
+  }, [basePrice, currentPrice])
 
   const handleSubmit = e => {
     e.preventDefault();
     console.log('Summary');
     console.log('=========');
-    console.log('Name: ', props.title);
+    console.log('Name: ', title);
     console.log('Price: ', getPrice);
     console.log('Size: ', currentSize);
     console.log('Color: ', currentColor);
@@ -27,15 +27,15 @@ const Product = props => {
 
   return (
     <article className={styles.product}>
-      <ProductImage title={props.title} name={props.name} color={currentColor} />
+      <ProductImage title={title} name={name} color={currentColor} />
       <div>
         <header>
-          <h2 className={styles.name}>{props.title}</h2>
+          <h2 className={styles.name}>{title}</h2>
           <span className={styles.price}>Price: {getPrice}$</span>
         </header>
         <ProductForm
-          sizes={props.sizes}
-          colors={props.colors}
+          sizes={sizes}
+          colors={colors}
           currentColor={currentColor}
           currentSize={currentSize}
           currentPrice={currentPrice}
@@ -43,7 +43,7 @@ const Product = props => {
           setCurrentSize={setCurrentSize}
           setCurrentPrice={setCurrentPrice}
           handleSubmit={handleSubmit}
-          basePrice={props.basePrice}
+          basePrice={basePrice}
         />
       </div>
     </article>

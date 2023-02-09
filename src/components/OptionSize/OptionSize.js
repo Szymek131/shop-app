@@ -3,15 +3,15 @@ import clsx from 'clsx';
 import shortid from 'shortid';
 import PropTypes from 'prop-types';
 
-const OptionSize = props => {
+const OptionSize = ({sizes, setCurrentSize, setCurrentPrice, currentSize}) => {
 
   return (
     <div className={styles.sizes}>
       <h3 className={styles.optionLabel}>Sizes</h3>
       <ul className={styles.choices}>
-        {props.sizes.map((size) => (
+        {sizes.map( size => (
           <li key={shortid()}>
-            <button type='button' onClick={() => { props.setCurrentSize(size.name); props.setCurrentPrice(size.additionalPrice)}} className={clsx(size.name === props.currentSize && styles.active)}>
+            <button type='button' onClick={() => { setCurrentSize(size.name); setCurrentPrice(size.additionalPrice)}} className={clsx(size.name === currentSize && styles.active)}>
               {size.name}
             </button>
           </li>))}
@@ -21,7 +21,6 @@ const OptionSize = props => {
 };
 
 OptionSize.propTypes = {
-  additionalPrice: PropTypes.number,
   sizes: PropTypes.array.isRequired,
   currentSize: PropTypes.string.isRequired,
   setCurrentSize: PropTypes.func.isRequired,

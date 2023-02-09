@@ -1,14 +1,14 @@
 import styles from './ProductImage.module.scss';
 import PropTypes from 'prop-types';
 
-const ProductImage = props => {
+const ProductImage = ({title, name, color}) => {
   
   return (
     <div className={styles.imageContainer}>
       <img 
         className={styles.image}
-        alt={props.title}
-        src={`${process.env.PUBLIC_URL}/images/products/shirt-${props.name}--${props.color}.jpg`} />
+        alt={title}
+        src={`${process.env.PUBLIC_URL}/images/products/shirt-${name}--${color}.jpg`} />
     </div>
   )
 }
